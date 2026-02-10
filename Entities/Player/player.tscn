@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bfaxiqkjc60v"]
+
+[ext_resource type="Script" uid="uid://gmrg1irrsffo" path="res://Entities/Player/Player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://djkv64lonkfgi" path="res://Assets/Characters/player.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://hwy8sxvysylx" path="res://Assets/UI/interact.png" id="2_vgqql"]
+[ext_resource type="Script" uid="uid://8km6w6v2t47b" path="res://Interface/ChoiceMenu.gd" id="4_vgqql"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jgup"]
+radius = 49.0
+height = 292.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mgca1"]
+radius = 57.0
+height = 312.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1410351202]
+visibility_layer = 2
+z_index = 2
+script = ExtResource("1_cvnsp")
+
+[node name="InteractPrompt" type="Sprite2D" parent="." unique_id=1362075252]
+visible = false
+visibility_layer = 3
+z_index = 1
+position = Vector2(3.637979e-12, -202.00002)
+scale = Vector2(0.18041237, 0.18041235)
+texture = ExtResource("2_vgqql")
+
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1282763433]
+z_index = 2
+position = Vector2(0, -19.546448)
+texture = ExtResource("2_6t5aa")
+
+[node name="Collision Shape" type="CollisionShape2D" parent="." unique_id=1267533534]
+shape = SubResource("CapsuleShape2D_4jgup")
+
+[node name="Interactable Area" type="Area2D" parent="." unique_id=1764076818]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable Area" unique_id=1496317801]
+shape = SubResource("CapsuleShape2D_mgca1")
+
+[node name="ChoiceMenu" type="VBoxContainer" parent="." unique_id=1854116826]
+visible = false
+z_index = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -247.0
+offset_right = 112.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_vgqql")
+
+[node name="ButtonTemplate" type="Button" parent="ChoiceMenu" unique_id=936233766]
+visible = false
+layout_mode = 2
+text = "Button Template"
+
+[connection signal="area_entered" from="Interactable Area" to="." method="_on_interactable_area_area_entered"]
+[connection signal="area_exited" from="Interactable Area" to="." method="_on_interactable_area_area_exited"]

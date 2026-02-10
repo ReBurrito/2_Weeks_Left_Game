@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bym4hcq36hqs7"]
+
+[ext_resource type="Script" uid="uid://u4b2k0bog7hc" path="res://Minigames/TV_Tuner/tv_tuner_game.gd" id="1_vk4wm"]
+[ext_resource type="Texture2D" uid="uid://bqlguk8713rmi" path="res://Assets/Minigames/TV_tuner/HiddenImages/tv_tunerminigame.jpg" id="2_517r7"]
+[ext_resource type="Texture2D" uid="uid://c0t8np0wkubnj" path="res://Assets/Minigames/TV_tuner/HiddenImages/tv_tunerminigame_2.jpg" id="2_jfks3"]
+[ext_resource type="Shader" uid="uid://cdylge0r4vydk" path="res://Minigames/TV_Tuner/static_mask.gdshader" id="2_qort8"]
+[ext_resource type="Texture2D" uid="uid://cb3ico4kkoiit" path="res://Assets/Minigames/TV_tuner/HiddenImages/tv_tunerminigame_3.jpg" id="3_1p14k"]
+[ext_resource type="Texture2D" uid="uid://dp4gqpnmjwf1f" path="res://Assets/Minigames/TV_tuner/HiddenImages/tv_tunerminigame_4.jpg" id="4_5ymls"]
+[ext_resource type="Texture2D" uid="uid://bmnw2d7la2uhw" path="res://Assets/Minigames/TV_tuner/HiddenImages/tv_tunerminigame_5.jpg" id="5_o4egp"]
+[ext_resource type="Texture2D" uid="uid://c3l4ir0jogwav" path="res://Assets/Minigames/TV_tuner/dial.png" id="8_jfks3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_517r7"]
+shader = ExtResource("2_qort8")
+shader_parameter/noise_intensity = 1.0
+shader_parameter/static_speed = 0.1
+
+[node name="TuningGame" type="CanvasLayer" unique_id=622490832]
+process_mode = 3
+script = ExtResource("1_vk4wm")
+memories = Array[Texture2D]([ExtResource("2_jfks3"), ExtResource("3_1p14k"), ExtResource("4_5ymls"), ExtResource("5_o4egp"), ExtResource("2_517r7")])
+metadata/_edit_vertical_guides_ = [360.0]
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=1767640754]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="GameContainer" type="Node2D" parent="." unique_id=839237595]
+
+[node name="HiddenImage" type="TextureRect" parent="GameContainer" unique_id=1662748992]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_517r7")
+
+[node name="StaticOverlay" type="ColorRect" parent="GameContainer" unique_id=640259136]
+material = SubResource("ShaderMaterial_517r7")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TuningDial" type="Sprite2D" parent="GameContainer" unique_id=1578302055]
+position = Vector2(0, 207.00002)
+scale = Vector2(0.08900002, 0.08900002)
+texture = ExtResource("8_jfks3")

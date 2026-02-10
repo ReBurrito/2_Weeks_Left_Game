@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://6abt26oe6mla"]
+
+[ext_resource type="Script" uid="uid://couaoe5f7ornq" path="res://Minigames/Steady_Hands/steady_hands.gd" id="1_cgkf1"]
+[ext_resource type="Texture2D" uid="uid://bqh4kedkuomy7" path="res://Assets/Minigames/Steady_Hands/pointer.png" id="2_q3ay4"]
+
+[node name="steady_hands" type="CanvasLayer" unique_id=2023376829 node_paths=PackedStringArray("path_node")]
+process_mode = 3
+script = ExtResource("1_cgkf1")
+path_node = NodePath("GameContainer/SolderPath")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=1366235517]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="GameContainer" type="Node2D" parent="." unique_id=157678369]
+
+[node name="SolderPath" type="Line2D" parent="GameContainer" unique_id=134960210]
+points = PackedVector2Array(-214, -83, 212, 212)
+
+[node name="SolderPoint" type="Sprite2D" parent="GameContainer" unique_id=1267677085]
+texture = ExtResource("2_q3ay4")

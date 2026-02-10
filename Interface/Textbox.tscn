@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc3fyce42tudr"]
+
+[ext_resource type="Script" uid="uid://bvc20qxjjmjx4" path="res://Interface/Textbox.gd" id="1_ktxlv"]
+[ext_resource type="Texture2D" uid="uid://bf6cu3eqfxeqk" path="res://Assets/UI/Textbox_SMALL.png" id="1_t18a7"]
+
+[node name="Textbox" type="MarginContainer"]
+offset_top = 394.0
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_vertical = 0
+script = ExtResource("1_ktxlv")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_t18a7")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

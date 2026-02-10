@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=3 uid="uid://ec2mvjk8k1p"]
+
+[ext_resource type="Script" uid="uid://c4jyaomdtlwtj" path="res://Levels/Intro/Intro.gd" id="1_ina6a"]
+[ext_resource type="Texture2D" uid="uid://wpr6o88n1jm" path="res://Assets/Events/3f23a6fdcf0246a636a6d1d3cade3ab9e85a2975.jpg" id="1_u3s32"]
+[ext_resource type="Texture2D" uid="uid://btliobwvjiy3v" path="res://Assets/Events/2024-06-30-11_43_10-Greenshot-Large.webp" id="2_ina6a"]
+[ext_resource type="Texture2D" uid="uid://dhk8w2hmvp3mo" path="res://Assets/Events/Until-Then-Nicole-and-Mark.jpg" id="3_tay7t"]
+[ext_resource type="Texture2D" uid="uid://dbxbi7lqwmmk6" path="res://Assets/Events/Until-Then-Rain-Scene.jpg" id="4_jw2oo"]
+
+[sub_resource type="Animation" id="Animation_iffca"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Image3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Image4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5dcil"]
+resource_name = "images"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Image3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Image4:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6jpy"]
+_data = {
+&"RESET": SubResource("Animation_iffca"),
+&"images": SubResource("Animation_5dcil")
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_ina6a")
+
+[node name="Image1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 323.99997)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_u3s32")
+
+[node name="Image2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324.00003)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ina6a")
+
+[node name="Image3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.45000002, 0.45000002)
+texture = ExtResource("3_tay7t")
+
+[node name="Image4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.45000002, 0.45000002)
+texture = ExtResource("4_jw2oo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o6jpy")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
