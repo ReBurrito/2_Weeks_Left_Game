@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bilieybg65alw"]
+
+[ext_resource type="Script" uid="uid://ch703ecd74tb1" path="res://Minigames/Fish_Feeding/fish_feeding.gd" id="1_tv55x"]
+[ext_resource type="Script" uid="uid://c53hi7t83nt36" path="res://Minigames/Fish_Feeding/fish_game_logic.gd" id="2_nigxe"]
+
+[node name="fish_feeding" type="CanvasLayer" unique_id=1807540120]
+process_mode = 3
+script = ExtResource("1_tv55x")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=1714123308]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="GameContainer" type="Control" parent="." unique_id=1741792719]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameBackground" type="ColorRect" parent="GameContainer" unique_id=1715039703]
+z_index = -1
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+
+[node name="FishGameLogic" type="Node2D" parent="GameContainer" unique_id=716733245]
+script = ExtResource("2_nigxe")
+
+[node name="GameOverButton" type="Button" parent="GameContainer" unique_id=1396182763]
+visible = false
+z_index = 1
+layout_mode = 1
+offset_left = 155.0
+offset_top = 251.0
+offset_right = 250.0
+offset_bottom = 282.0
+text = "Game Over"
+
+[node name="Score" type="Label" parent="GameContainer/GameOverButton" unique_id=470864179]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -25.0
+offset_right = 96.0
+offset_bottom = -2.0
+text = "Fish Fed: 9"
+
+[connection signal="pressed" from="GameContainer/GameOverButton" to="." method="_on_game_over_button_pressed"]

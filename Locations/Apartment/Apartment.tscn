@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://qnmla4dedm1c"]
+
+[ext_resource type="Texture2D" uid="uid://crau5rw7mtlwq" path="res://Assets/Environment/Background/Room.png" id="1_a4gp0"]
+[ext_resource type="Script" uid="uid://bky2e57w3l34j" path="res://Entities/Objects/Shelf.gd" id="2_n1qb2"]
+[ext_resource type="PackedScene" uid="uid://brldd4ns82y7d" path="res://Minigames/Sliding_Puzzle/sliding_puzzle.tscn" id="3_t4bh1"]
+[ext_resource type="PackedScene" uid="uid://6abt26oe6mla" path="res://Minigames/Steady_Hands/steady_hands.tscn" id="4_bw2mh"]
+[ext_resource type="Texture2D" uid="uid://bo55pklg8n6x8" path="res://Assets/Environment/Interactables/shelf.png" id="5_m30gt"]
+[ext_resource type="Script" uid="uid://chonwlxy77gvy" path="res://Entities/Objects/Bed.gd" id="6_3pfv4"]
+[ext_resource type="Texture2D" uid="uid://bhq3ryomqy43s" path="res://Assets/Environment/Interactables/bed.png" id="7_s2alx"]
+[ext_resource type="Script" uid="uid://cksdly4i2ve4o" path="res://Entities/Objects/TV.gd" id="8_bi3p7"]
+[ext_resource type="PackedScene" uid="uid://bn27f5tphnfys" path="res://Minigames/Snake/snake_game.tscn" id="9_7b6d5"]
+[ext_resource type="PackedScene" uid="uid://bym4hcq36hqs7" path="res://Minigames/TV_Tuner/tv_tuner.tscn" id="10_rvmcv"]
+[ext_resource type="Texture2D" uid="uid://cmq6cicphpiph" path="res://Assets/Environment/Interactables/tv.png" id="11_043xe"]
+[ext_resource type="Script" uid="uid://x347dg86yxsn" path="res://Entities/Objects/Door.gd" id="12_y02o7"]
+[ext_resource type="Texture2D" uid="uid://dhev7ow46cjag" path="res://Assets/Environment/Interactables/door-left.png" id="13_fgmc2"]
+[ext_resource type="PackedScene" uid="uid://bfaxiqkjc60v" path="res://Entities/Player/player.tscn" id="14_qi0ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oqry"]
+size = Vector2(64, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8fda"]
+size = Vector2(76, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6wy6"]
+size = Vector2(153.5, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjcri"]
+size = Vector2(98, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8yly"]
+size = Vector2(50, 339)
+
+[node name="Apartment Scene" type="Node2D" unique_id=1469358276]
+
+[node name="background" type="Sprite2D" parent="." unique_id=9159787]
+position = Vector2(640, 360)
+texture = ExtResource("1_a4gp0")
+
+[node name="MapBoundaries" type="StaticBody2D" parent="." unique_id=610268150]
+
+[node name="LeftWall" type="CollisionShape2D" parent="MapBoundaries" unique_id=37071637]
+position = Vector2(32, 360)
+shape = SubResource("RectangleShape2D_3oqry")
+
+[node name="RightWall" type="CollisionShape2D" parent="MapBoundaries" unique_id=591888511]
+position = Vector2(1248, 360)
+shape = SubResource("RectangleShape2D_3oqry")
+
+[node name="Shelf" type="Area2D" parent="." unique_id=229592162]
+collision_layer = 3
+script = ExtResource("2_n1qb2")
+sliding_puzzle = ExtResource("3_t4bh1")
+steady_hands = ExtResource("4_bw2mh")
+
+[node name="Sprite" type="Sprite2D" parent="Shelf" unique_id=1564070258]
+position = Vector2(1101, 465.5)
+texture = ExtResource("5_m30gt")
+
+[node name="DetectionZone" type="CollisionShape2D" parent="Shelf" unique_id=2012109168]
+position = Vector2(1130, 480)
+shape = SubResource("RectangleShape2D_f8fda")
+
+[node name="Bed" type="Area2D" parent="." unique_id=1004622737]
+collision_layer = 3
+script = ExtResource("6_3pfv4")
+
+[node name="Sprite" type="Sprite2D" parent="Bed" unique_id=2069426562]
+position = Vector2(825, 591.5)
+texture = ExtResource("7_s2alx")
+
+[node name="DetectionZone" type="CollisionShape2D" parent="Bed" unique_id=1732814981]
+position = Vector2(799, 508)
+shape = SubResource("RectangleShape2D_t6wy6")
+
+[node name="TV" type="Area2D" parent="." unique_id=2108052852]
+collision_layer = 3
+script = ExtResource("8_bi3p7")
+snake_game = ExtResource("9_7b6d5")
+tv_tuner = ExtResource("10_rvmcv")
+
+[node name="Sprite" type="Sprite2D" parent="TV" unique_id=430344893]
+position = Vector2(368.5, 514.5)
+texture = ExtResource("11_043xe")
+
+[node name="DetectionZone" type="CollisionShape2D" parent="TV" unique_id=1899312786]
+position = Vector2(375, 478)
+shape = SubResource("RectangleShape2D_vjcri")
+
+[node name="Door" type="Area2D" parent="." unique_id=1214377627]
+collision_layer = 3
+script = ExtResource("12_y02o7")
+
+[node name="Sprite" type="Sprite2D" parent="Door" unique_id=2007478414]
+position = Vector2(72, 485)
+texture = ExtResource("13_fgmc2")
+
+[node name="DetectionZone" type="CollisionShape2D" parent="Door" unique_id=721818348]
+position = Vector2(93, 476.5)
+shape = SubResource("RectangleShape2D_t8yly")
+
+[node name="Player" parent="." unique_id=782714117 instance=ExtResource("14_qi0ts")]
+z_index = 1
+position = Vector2(186, 515)

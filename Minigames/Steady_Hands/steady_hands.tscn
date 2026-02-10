@@ -23,3 +23,4 @@ points = PackedVector2Array(-214, -83, 212, 212)
 
 [node name="SolderPoint" type="Sprite2D" parent="GameContainer" unique_id=1267677085]
 texture = ExtResource("2_q3ay4")
+centered = false

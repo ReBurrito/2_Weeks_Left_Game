@@ -19,7 +19,7 @@ func showtext():																																									# Code to make the char
 	add_child(textbox_instance)
 	while current_line < dialogue.size():
 		textbox_instance._display_text(dialogue[current_line])
-		await get_tree().create_timer(4.0).timeout 
+		await get_tree().create_timer(3.0).timeout 
 		current_line += 1
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("uid://qnmla4dedm1c")

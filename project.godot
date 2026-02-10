@@ -27,6 +27,7 @@ GameManager="*uid://1kgkfyku7y03"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/aspect="expand"
 
 [input]
 

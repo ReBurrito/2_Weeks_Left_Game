@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://iy1i1njmb3lo"]
+
+[ext_resource type="Script" uid="uid://djn7aqdr5yakl" path="res://Minigames/Fishing/fishing_game.gd" id="1_2echs"]
+
+[node name="fishing_game" type="CanvasLayer" unique_id=2060051288]
+process_mode = 3
+script = ExtResource("1_2echs")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=1455054331]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="GameBackground" type="ColorRect" parent="." unique_id=607156923]
+z_index = -1
+offset_left = 440.0
+offset_top = 160.0
+offset_right = 840.0
+offset_bottom = 560.0
+color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+
+[node name="GameContainer" type="Control" parent="." unique_id=416773535]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FishingBar" type="ColorRect" parent="GameContainer" unique_id=472851565]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -10.0
+offset_right = 150.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23137255, 0.4745098, 1, 1)
+
+[node name="CatchZone" type="ColorRect" parent="GameContainer/FishingBar" unique_id=1780563467]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 20.0
+color = Color(1, 1, 0.4745098, 1)
+
+[node name="Fish" type="ColorRect" parent="GameContainer/FishingBar" unique_id=1211607284]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="ProgressBar" type="ProgressBar" parent="GameContainer/FishingBar" unique_id=900160900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = 10.0
+offset_right = 2.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartLabel" type="Label" parent="GameContainer" unique_id=1285443327]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.0
+offset_right = 150.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left Click to Cast..."
+horizontal_alignment = 1
+vertical_alignment = 1

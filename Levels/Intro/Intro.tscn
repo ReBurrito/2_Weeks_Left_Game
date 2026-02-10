@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ec2mvjk8k1p"]
+[gd_scene format=3 uid="uid://ec2mvjk8k1p"]
 
 [ext_resource type="Script" uid="uid://c4jyaomdtlwtj" path="res://Levels/Intro/Intro.gd" id="1_ina6a"]
 [ext_resource type="Texture2D" uid="uid://wpr6o88n1jm" path="res://Assets/Events/3f23a6fdcf0246a636a6d1d3cade3ab9e85a2975.jpg" id="1_u3s32"]
@@ -59,7 +59,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_5dcil"]
 resource_name = "images"
-length = 4.0
+length = 16.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +67,7 @@ tracks/0/path = NodePath("Image1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 1),
+"times": PackedFloat32Array(0, 0.099999994, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -79,7 +79,7 @@ tracks/1/path = NodePath("Image2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 3, 6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -91,7 +91,7 @@ tracks/2/path = NodePath("Image3:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2, 3),
+"times": PackedFloat32Array(0, 6, 9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -103,7 +103,7 @@ tracks/3/path = NodePath("Image4:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3, 4),
+"times": PackedFloat32Array(0, 9, 12),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -115,36 +115,34 @@ _data = {
 &"images": SubResource("Animation_5dcil")
 }
 
-[node name="Intro" type="Node2D"]
+[node name="Intro" type="Node2D" unique_id=90945975]
 script = ExtResource("1_ina6a")
 
-[node name="Image1" type="Sprite2D" parent="."]
+[node name="Image1" type="Sprite2D" parent="." unique_id=1463342382]
 z_index = -1
-position = Vector2(576, 323.99997)
-scale = Vector2(0.3, 0.3)
+position = Vector2(640, 359.99997)
+scale = Vector2(0.3333333, 0.33333337)
 texture = ExtResource("1_u3s32")
 
-[node name="Image2" type="Sprite2D" parent="."]
+[node name="Image2" type="Sprite2D" parent="." unique_id=1391313223]
 z_index = -1
-position = Vector2(576, 324.00003)
-scale = Vector2(0.6, 0.6)
+position = Vector2(640, 360)
+scale = Vector2(0.6666667, 0.6666666)
 texture = ExtResource("2_ina6a")
 
-[node name="Image3" type="Sprite2D" parent="."]
+[node name="Image3" type="Sprite2D" parent="." unique_id=1824980871]
 z_index = -1
-position = Vector2(576, 324)
-scale = Vector2(0.45000002, 0.45000002)
+position = Vector2(640, 359.99997)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_tay7t")
 
-[node name="Image4" type="Sprite2D" parent="."]
+[node name="Image4" type="Sprite2D" parent="." unique_id=309924635]
 z_index = -1
-position = Vector2(576, 324)
-scale = Vector2(0.45000002, 0.45000002)
+position = Vector2(640.00006, 359.99997)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_jw2oo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o6jpy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2140712510]
+libraries/ = SubResource("AnimationLibrary_o6jpy")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

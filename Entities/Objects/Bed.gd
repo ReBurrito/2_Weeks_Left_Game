@@ -11,7 +11,7 @@ func sleep():																																											# Adding function to eac
 	GameManager.reset_actions()
 	if GameManager.current_day > 1:
 		GameManager.advance_day()
-
+"""==========================================================================================="""
 func leave_object():
 	print("Maybe later.")
 """==========================================================================================="""

@@ -5,7 +5,7 @@ extends Interactable
 #========================================CUSTOM FUNCTIONS========================================
 func get_choices() -> Dictionary:
 	return {
-		"Gamer mode": play_game,
+		"Let's play some games.": play_game,
 		"The news channel is on.": watch_news,
 		"Not yet...": leave_object
 	}

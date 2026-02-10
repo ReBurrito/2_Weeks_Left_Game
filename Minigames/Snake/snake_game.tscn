@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bf6bn7l5twk75" path="res://Minigames/Snake/snake_game.gd" id="1_qa8bj"]
 [ext_resource type="Script" uid="uid://ce85xl861x0kt" path="res://Minigames/Snake/snake_game_logic.gd" id="2_1lhnw"]
 
-[node name="SnakeGame" type="CanvasLayer" unique_id=1713249092]
+[node name="snake_game" type="CanvasLayer" unique_id=1713249092]
 process_mode = 3
 script = ExtResource("1_qa8bj")
 metadata/_edit_vertical_guides_ = [640.0, 800.0, 151.0]

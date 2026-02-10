@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c14m7dy1h6o7v"]
+
+[ext_resource type="Texture2D" uid="uid://crau5rw7mtlwq" path="res://Assets/Environment/Background/Room.png" id="1_wu583"]
+[ext_resource type="Texture2D" uid="uid://ba20o7yvtk4j6" path="res://Assets/Environment/Interactables/bike-rack.png" id="2_1mtom"]
+[ext_resource type="Script" uid="uid://b2okbjbmpyk6i" path="res://Entities/Objects/Lake.gd" id="2_twl0d"]
+[ext_resource type="PackedScene" uid="uid://bilieybg65alw" path="res://Minigames/Fish_Feeding/fish_feeding.tscn" id="3_xppv4"]
+[ext_resource type="PackedScene" uid="uid://iy1i1njmb3lo" path="res://Minigames/Fishing/fishing_game.tscn" id="4_s00n4"]
+[ext_resource type="PackedScene" uid="uid://bfaxiqkjc60v" path="res://Entities/Player/player.tscn" id="6_xppv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5acs"]
+size = Vector2(64, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clh88"]
+size = Vector2(116, 70)
+
+[node name="Park Scene" type="Node2D" unique_id=1098212074]
+
+[node name="background" type="Sprite2D" parent="." unique_id=152342429]
+position = Vector2(640, 360)
+texture = ExtResource("1_wu583")
+
+[node name="MapBoundaries" type="StaticBody2D" parent="." unique_id=519206381]
+
+[node name="Left Wall" type="CollisionShape2D" parent="MapBoundaries" unique_id=1759124335]
+position = Vector2(32, 360)
+shape = SubResource("RectangleShape2D_h5acs")
+
+[node name="Right Wall" type="CollisionShape2D" parent="MapBoundaries" unique_id=1257073412]
+position = Vector2(1248, 360)
+shape = SubResource("RectangleShape2D_h5acs")
+
+[node name="Lake" type="Area2D" parent="." unique_id=917542239]
+script = ExtResource("2_twl0d")
+fish_feeding = ExtResource("3_xppv4")
+fishing = ExtResource("4_s00n4")
+
+[node name="Sprite" type="Sprite2D" parent="Lake" unique_id=1431629274]
+position = Vector2(341.00003, 533)
+scale = Vector2(0.10871318, 0.10871319)
+texture = ExtResource("2_1mtom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lake" unique_id=301989115]
+position = Vector2(338, 445)
+shape = SubResource("RectangleShape2D_clh88")
+
+[node name="Player" parent="Lake" unique_id=1410351202 instance=ExtResource("6_xppv4")]
+z_index = 1
+position = Vector2(186, 515)
