@@ -1,7 +1,7 @@
 extends CanvasLayer
 #===========================================VARIABLES============================================
 var game_size = Vector2(400, 400)      																														## The size of the minigame window
-var launch_origin = Vector2(50, 250)  																														## The "slingshot" anchor point
+var launch_origin = Vector2(75, 250)  																														## The "slingshot" anchor point
 var water_level_y = 320.0             																														## The Y-coordinate of the water surface
 var lake_start_x = 200.0              																														## Where the "active" feeding part of the lake begins
 var lake_end_x = 380.0                																														## Where the "active" feeding part of the lake ends
@@ -27,11 +27,14 @@ func _process(delta):
 	if is_flying:
 		food_velocity.y += gravity * delta
 		food_pos += food_velocity * delta
+		if (food_pos.x >= 400) or (food_pos.x <= 0):
+			reset_food()
 		if food_pos.y >= water_level_y:																																# Check if food has hit the surface of the water
 			if food_pos.x >= lake_start_x and food_pos.x <= lake_end_x:
 				hit_target()
 			else:
 				reset_food()
+
 		game_logic_node.queue_redraw()
 #=======================================BUILT-IN FUNCTIONS=======================================
 func _input(event):
@@ -46,8 +49,8 @@ func _input(event):
 	if event is InputEventMouseMotion and is_dragging:
 		var local_mouse = event.position - game_container.global_position
 		var dir = local_mouse - launch_origin
-		if dir.length() > 100:																																				# Limit drag distance
-			dir = dir.normalized() * 100
+		if dir.length() > 75:																																				# Limit drag distance
+			dir = dir.normalized() * 75
 		food_pos = launch_origin + dir
 		game_logic_node.queue_redraw()
 """==========================================================================================="""
