@@ -43,6 +43,6 @@ texture = ExtResource("2_1mtom")
 position = Vector2(338, 445)
 shape = SubResource("RectangleShape2D_clh88")
 
-[node name="Player" parent="Lake" unique_id=1410351202 instance=ExtResource("6_xppv4")]
+[node name="Player" parent="." unique_id=1410351202 instance=ExtResource("6_xppv4")]
 z_index = 1
 position = Vector2(186, 515)

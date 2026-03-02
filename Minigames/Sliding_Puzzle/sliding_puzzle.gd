@@ -9,13 +9,13 @@ var empty_tile_pos: Vector2i                                                				
 var is_shuffling = false
 var is_solved = false
 """==========================================================================================="""
-@onready var container = $GameContainer
+@onready var game_container = $GameContainer
 @onready var tile_parent = $GameContainer/TileHolder                       												# A Control/Node2D to hold the pieces
 #====================================READY + PROCESS FUNCTION====================================
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size
 	var puzzle_total_size = puzzle_image.get_size() 
-	container.position = (screen_size / 2) - (puzzle_total_size / 2)
+	game_container.position = (screen_size / 2) - (puzzle_total_size / 2)
 	create_puzzle()
 	shuffle_puzzle()
 """==========================================================================================="""

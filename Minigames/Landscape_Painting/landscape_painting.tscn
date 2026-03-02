@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dfwoqyl8vhw4w"]
+
+[ext_resource type="Script" uid="uid://sc0phhi04kx2" path="res://Minigames/Landscape_Painting/landscape_painting.gd" id="1_epl7w"]
+[ext_resource type="Texture2D" uid="uid://c0t8np0wkubnj" path="res://Assets/Minigames/TV_tuner/HiddenImages/tv_tunerminigame_2.jpg" id="2_qfjbi"]
+
+[sub_resource type="Gradient" id="Gradient_qfjbi"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="landscape_painting" type="CanvasLayer" unique_id=144122992]
+script = ExtResource("1_epl7w")
+
+[node name="GameContainer" type="Control" parent="." unique_id=300140323]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 400.0
+
+[node name="ReferenceImage" type="TextureRect" parent="GameContainer" unique_id=338772818]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+texture = ExtResource("2_qfjbi")
+
+[node name="LandscapeImage" type="TextureRect" parent="GameContainer" unique_id=1526219956]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+texture = ExtResource("2_qfjbi")
+
+[node name="StrokeLine" type="Line2D" parent="GameContainer" unique_id=1020839579]
+gradient = SubResource("Gradient_qfjbi")
+
+[node name="GuideLine" type="Line2D" parent="GameContainer" unique_id=6714351]
+points = PackedVector2Array(22, 346, 351, 335)
+width = 4.0
+default_color = Color(1.0627335, 1.0627335, 1.0627335, 1)
+gradient = SubResource("Gradient_qfjbi")
+texture_mode = 1
+joint_mode = 2
+
+[node name="PromptLabel" type="Label" parent="GameContainer" unique_id=1338006651]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2

@@ -10,12 +10,12 @@ var is_soldering = false
 var progress = 0.0                                                          											## Tracks how far along the path the player is
 var is_complete = false
 """==========================================================================================="""
-@onready var container = $GameContainer
+@onready var game_container = $GameContainer
 @onready var iron_tip = $GameContainer/SolderPoint
 #====================================READY + PROCESS FUNCTION====================================
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size
-	container.position = (screen_size / 2) - (work_area_size / 2)																		# Center the container based on the work area size
+	game_container.position = (screen_size / 2) - (work_area_size / 2)																		# Center the container based on the work area size
 	generate_random_path()																																					# Calls function to generate a random path for the player to trace
 	progress = 0.0
 	is_complete = false

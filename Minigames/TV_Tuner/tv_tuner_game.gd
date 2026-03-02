@@ -13,11 +13,11 @@ var current_hold_time = 0.0
 @onready var static_rect = $GameContainer/StaticOverlay
 @onready var dial = $GameContainer/TuningDial
 @onready var hidden_image = $GameContainer/HiddenImage
-@onready var container = $GameContainer
+@onready var game_container = $GameContainer
 #====================================READY + PROCESS FUNCTION====================================
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size
-	container.position = (screen_size / 2)																													# This + Line above is sued to center the game to the screen
+	game_container.position = (screen_size / 2)																											# This + Line above is sued to center the game to the screen
 	if memories.size() > 0:
 		current_memory_index = randi() % memories.size()																							# Selects a random image from the index
 		hidden_image.texture = memories[current_memory_index]
@@ -46,7 +46,7 @@ func _input(event):
 #========================================CUSTOM FUNCTIONS========================================
 func update_dial_rotation():																																			# Function used to update and rotate the dial thhrough user input
 	var mouse_pos = get_viewport().get_mouse_position()
-	var direction_vec = mouse_pos - (container.global_position + dial.position)
+	var direction_vec = mouse_pos - (game_container.global_position + dial.position)
 	dial.rotation_degrees = rad_to_deg(direction_vec.angle())
 """==========================================================================================="""
 func angle_difference_deg(from, to):

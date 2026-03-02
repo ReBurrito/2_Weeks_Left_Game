@@ -17,7 +17,7 @@ var drain_speed = 15.0  																																					## Points per secon
 var is_active = true
 var is_started = false
 """==========================================================================================="""
-@onready var container = $GameContainer
+@onready var game_container = $GameContainer
 @onready var fishing_bar = $GameContainer/FishingBar
 @onready var catch_zone = $GameContainer/FishingBar/CatchZone
 @onready var fish_sprite = $GameContainer/FishingBar/Fish
@@ -26,7 +26,7 @@ var is_started = false
 #====================================READY + PROCESS FUNCTION====================================
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size																				# Center the game container
-	container.position = (screen_size / 2) - (game_size / 2)
+	game_container.position = (screen_size / 2) - (game_size / 2)
 	fishing_bar.custom_minimum_size.x = bar_width																										# Code to set the size of the bar
 	fishing_bar.size.x = bar_width 
 	catch_zone.size.x = zone_width
