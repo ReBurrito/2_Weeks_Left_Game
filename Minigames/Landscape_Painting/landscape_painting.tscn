@@ -7,7 +7,16 @@
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="landscape_painting" type="CanvasLayer" unique_id=144122992]
+process_mode = 3
 script = ExtResource("1_epl7w")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=264168357]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
 
 [node name="GameContainer" type="Control" parent="." unique_id=300140323]
 layout_mode = 3
@@ -16,7 +25,7 @@ offset_right = 400.0
 offset_bottom = 400.0
 
 [node name="ReferenceImage" type="TextureRect" parent="GameContainer" unique_id=338772818]
-modulate = Color(1, 1, 1, 0.39215687)
+modulate = Color(1, 1, 1, 0.039215688)
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 400.0

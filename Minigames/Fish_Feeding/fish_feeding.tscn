@@ -31,22 +31,11 @@ color = Color(0.1728327, 0.17283267, 0.17283267, 1)
 [node name="FishGameLogic" type="Node2D" parent="GameContainer" unique_id=716733245]
 script = ExtResource("2_nigxe")
 
-[node name="GameOverButton" type="Button" parent="GameContainer" unique_id=1396182763]
+[node name="Score" type="Label" parent="GameContainer" unique_id=470864179]
 visible = false
-z_index = 1
-layout_mode = 1
-offset_left = 155.0
-offset_top = 251.0
-offset_right = 250.0
-offset_bottom = 282.0
-text = "Game Over"
-
-[node name="Score" type="Label" parent="GameContainer/GameOverButton" unique_id=470864179]
 layout_mode = 0
-offset_left = 6.0
-offset_top = -25.0
-offset_right = 96.0
-offset_bottom = -2.0
+offset_left = 161.0
+offset_top = 226.0
+offset_right = 251.0
+offset_bottom = 249.0
 text = "Fish Fed: 9"
-
-[connection signal="pressed" from="GameContainer/GameOverButton" to="." method="_on_game_over_button_pressed"]

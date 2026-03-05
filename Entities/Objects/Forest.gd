@@ -1,41 +1,41 @@
 extends Interactable
 #===========================================VARIABLES============================================
-@export var fish_feeding: PackedScene
-@export var fishing: PackedScene
+@export var landscape_painting: PackedScene
+@export var biking: PackedScene
 #========================================CUSTOM FUNCTIONS========================================
 func get_choices() -> Dictionary:
 	return {
-		"Let's feed thye fish.": feed_fish,
-		"This park allows fishing?": catch_fish,
+		"What a lovely scene.": painting,
+		"Great weather for a bike ride.": ride_bike,
 		"Maybe Later...": leave_object
 	}
 """==========================================================================================="""
-func feed_fish():
-	print("I feel more social!")
-	GameManager.used_object("Sociability", 1)
-	spawn_fish_feeding_game()
+func painting():
+	print("I feel more creative!")
+	GameManager.used_object("Creativity", 1)
+	spawn_painting_game()
 """==========================================================================================="""
-func catch_fish():
+func ride_bike():
 	print("I feel stronger!")
 	GameManager.used_object("Strength", 1)
-	spawn_fishing_game()
+	spawn_biking_game()
 """==========================================================================================="""
 func leave_object():
 	print("Maybe later.")
 """==========================================================================================="""
-func spawn_fish_feeding_game():
-	if fish_feeding:
-		var game_instance = fish_feeding.instantiate()
+func spawn_painting_game():
+	if landscape_painting:
+		var game_instance = landscape_painting.instantiate()
 		add_child(game_instance)
 		get_tree().paused = true
 	else:
-		print("Error: Fish feeding game scene not assigned in Inspector!")
+		print("Error: painting game scene not assigned in Inspector!")
 """==========================================================================================="""
-func spawn_fishing_game():
-	if fishing:
-		var game_instance = fishing.instantiate()
+func spawn_biking_game():
+	if biking:
+		var game_instance = biking.instantiate()
 		add_child(game_instance)
 		get_tree().paused = true
 	else:
-		print("Error: Fishing game scene not assigned in Inspector!")
+		print("Error: biking game scene not assigned in Inspector!")
 """==========================================================================================="""

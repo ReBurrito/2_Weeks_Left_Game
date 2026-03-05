@@ -5,7 +5,10 @@
 [ext_resource type="Script" uid="uid://b2okbjbmpyk6i" path="res://Entities/Objects/Lake.gd" id="2_twl0d"]
 [ext_resource type="PackedScene" uid="uid://bilieybg65alw" path="res://Minigames/Fish_Feeding/fish_feeding.tscn" id="3_xppv4"]
 [ext_resource type="PackedScene" uid="uid://iy1i1njmb3lo" path="res://Minigames/Fishing/fishing_game.tscn" id="4_s00n4"]
+[ext_resource type="Script" uid="uid://cnqt1bqyk6xhy" path="res://Entities/Objects/Forest.gd" id="6_s00n4"]
+[ext_resource type="PackedScene" uid="uid://dfwoqyl8vhw4w" path="res://Minigames/Landscape_Painting/landscape_painting.tscn" id="6_wc6kp"]
 [ext_resource type="PackedScene" uid="uid://bfaxiqkjc60v" path="res://Entities/Player/player.tscn" id="6_xppv4"]
+[ext_resource type="PackedScene" uid="uid://q02xhnv0axgt" path="res://Minigames/Bike_Game/bike_game.tscn" id="7_uvevf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5acs"]
 size = Vector2(64, 640)
@@ -43,6 +46,21 @@ texture = ExtResource("2_1mtom")
 position = Vector2(338, 445)
 shape = SubResource("RectangleShape2D_clh88")
 
+[node name="Forest" type="Area2D" parent="." unique_id=618656500]
+position = Vector2(589, 0)
+script = ExtResource("6_s00n4")
+landscape_painting = ExtResource("6_wc6kp")
+biking = ExtResource("7_uvevf")
+
+[node name="Sprite" type="Sprite2D" parent="Forest" unique_id=214869127]
+position = Vector2(341.00003, 533)
+scale = Vector2(0.10871318, 0.10871319)
+texture = ExtResource("2_1mtom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forest" unique_id=1423602195]
+position = Vector2(338, 445)
+shape = SubResource("RectangleShape2D_clh88")
+
 [node name="Player" parent="." unique_id=1410351202 instance=ExtResource("6_xppv4")]
 z_index = 1
-position = Vector2(186, 515)
+position = Vector2(796, 515)

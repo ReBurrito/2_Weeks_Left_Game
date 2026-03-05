@@ -105,9 +105,12 @@ func complete_circuit():
 	is_complete = true
 	iron_tip.modulate = Color.GREEN
 	print("Circuit Restored!")
-	await get_tree().create_timer(1.5).timeout
-	exit_game()
+	var tween = create_tween()
+	tween.tween_interval(2.0)																																				# Tween timer to allow the player to admire the painting.
+	tween.tween_property(game_container, "modulate:a", 0.0, 0.5)
+	tween.finished.connect(exit_game)
 """==========================================================================================="""
 func exit_game():
+	get_tree().paused = false
 	queue_free()
 """==========================================================================================="""

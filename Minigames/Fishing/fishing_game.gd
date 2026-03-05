@@ -1,21 +1,21 @@
 extends CanvasLayer
 #===========================================VARIABLES============================================
-var game_size = Vector2(400, 400)
+var game_size = Vector2(400, 400)																																	## The size of the minigame window
 var bar_width = 300.0																																							## Size of the full fishing bar
 var zone_width = 60.0																																							## Size of the catching zone
 var fish_width = 20.0																																							## Size of the fish
-var zone_pos_x = 0.0
-var zone_velocity = 0.0
+var zone_pos_x = 0.0																																							## Catching zone position
+var zone_velocity = 0.0																																						## Catching zone velocity, used to create momentum for smoother movement
 var zone_accel = 4000.0																																						## Fishing bar move speed
 var friction = 0.9																																								## Controls reel speed
 var fish_pos_x = 100.0																																						## Fish starting position
 var fish_target_x = 0.0																																						## Fish target location
 var fish_speed = 100.0																																						## Fish move speed
-var catch_progress = 0.0
+var catch_progress = 0.0																																					## Player progress towards catching the fish, increases when the fish is in the zone and decreases when it's not
 var catch_speed = 30.0  																																					## Points per second gained
 var drain_speed = 15.0  																																					## Points per second lost
-var is_active = true
-var is_started = false
+var is_active = true																																							## Used to control when the game should be processing and accepting input
+var is_started = false																																						## Used to control when the game should be processing and accepting input, separate from is_active to allow for a start screen
 """==========================================================================================="""
 @onready var game_container = $GameContainer
 @onready var fishing_bar = $GameContainer/FishingBar
@@ -96,9 +96,12 @@ func update_ui():																																									# Code to update the U
 func win_game():
 	is_active = false
 	print("You caught a memory!")
-	await get_tree().create_timer(2).timeout
-	exit_game()
+	var tween = create_tween()
+	tween.tween_interval(2.0)																																				# Tween timer to allow the player to admire the painting.
+	tween.tween_property(game_container, "modulate:a", 0.0, 0.5)
+	tween.finished.connect(exit_game)
 """==========================================================================================="""
 func exit_game():
+	get_tree().paused = false
 	queue_free()
 """==========================================================================================="""

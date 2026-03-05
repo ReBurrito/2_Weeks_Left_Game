@@ -85,5 +85,9 @@ func finish_and_close():																																					# When the painting
 	var tween = create_tween()
 	tween.tween_interval(2.0)																																				# Tween timer to allow the player to admire the painting.
 	tween.tween_property(game_container, "modulate:a", 0.0, 0.5)
-	tween.finished.connect(queue_free)
+	tween.finished.connect(exit_game)
+"""==========================================================================================="""
+func exit_game():
+	get_tree().paused = false
+	queue_free()
 """==========================================================================================="""

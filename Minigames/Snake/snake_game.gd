@@ -8,15 +8,15 @@ var next_direction = Vector2.RIGHT
 var food = Vector2.ZERO
 var score = 0
 """==========================================================================================="""
+@onready var game_container = $GameContainer
 @onready var timer = $GameContainer/SnakeGameLogic/MoveTimer
-@onready var game_over_btn = $GameContainer/GameOverButton
-@onready var final_score = $GameContainer/GameOverButton/Score
+@onready var final_score = $GameContainer/Score
 @onready var snake_logic_node = $GameContainer/SnakeGameLogic
 #====================================READY + PROCESS FUNCTION====================================
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size
 	var grid_pixels = cells * grid_size
-	$GameContainer.position = (screen_size / 2) - (grid_pixels / 2)
+	game_container.position = (screen_size / 2) - (grid_pixels / 2)
 	place_food()
 	timer.timeout.connect(_on_move_timer_timeout)
 #=======================================BUILT-IN FUNCTIONS=======================================
@@ -43,9 +43,6 @@ func _on_move_timer_timeout():
 	else:
 		snake.pop_back()																																							# If no food token has been claimed, remove the last part of the snake
 	snake_logic_node.queue_redraw()
-"""==========================================================================================="""
-func _on_game_over_button_pressed():
-	exit_game()
 #========================================CUSTOM FUNCTIONS========================================
 func place_food():
 	food = Vector2(randi() % int(cells.x), randi() % int(cells.y))																	# Uses randomizer to spawn in food
@@ -54,8 +51,12 @@ func place_food():
 """==========================================================================================="""
 func show_game_over():
 	timer.stop()
-	game_over_btn.visible = true
 	final_score.text = "Score: %d" % score
+	final_score.visible = true
+	var tween = create_tween()
+	tween.tween_interval(2.0)																																				# Tween timer to allow the player to admire the painting.
+	tween.tween_property(game_container, "modulate:a", 0.0, 0.5)
+	tween.finished.connect(exit_game)
 """==========================================================================================="""
 func exit_game():
 	get_tree().paused = false

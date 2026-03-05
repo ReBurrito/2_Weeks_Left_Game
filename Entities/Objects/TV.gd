@@ -26,7 +26,7 @@ func leave_object():
 func spawn_snake_game():
 	if snake_game:
 		var game_instance = snake_game.instantiate()
-		get_tree().root.add_child(game_instance)
+		add_child(game_instance)
 		get_tree().paused = true
 	else:
 		print("Error: Snake game scene not assigned in Inspector!")
@@ -34,8 +34,8 @@ func spawn_snake_game():
 func spawn_tv_tuner_game():
 	if tv_tuner:
 		var game_instance = tv_tuner.instantiate()
-		get_tree().root.add_child(game_instance)
+		add_child(game_instance)
 		get_tree().paused = true
 	else:
-		print("Error: Snake game scene not assigned in Inspector!")
+		print("Error: TV tuner game scene not assigned in Inspector!")
 """==========================================================================================="""

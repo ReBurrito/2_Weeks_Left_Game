@@ -57,8 +57,10 @@ func complete_tuning():
 	dial.rotation_degrees = target_angle
 	static_rect.material.set_shader_parameter("noise_intensity", 0.0)																# Disables the "noise" mesh
 	print("Memory Found: Signal Locked!")
-	await get_tree().create_timer(2.0).timeout																											# Holds the image for 2 seconds before closing the minigame
-	exit_game()
+	var tween = create_tween()
+	tween.tween_interval(2.0)																																				# Tween timer to allow the player to admire the painting.
+	tween.tween_property(game_container, "modulate:a", 0.0, 0.5)
+	tween.finished.connect(exit_game)
 """==========================================================================================="""
 func exit_game():
 	get_tree().paused = false

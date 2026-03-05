@@ -15,8 +15,7 @@ var attempts = 0
 """==========================================================================================="""
 @onready var game_container = $GameContainer
 @onready var game_logic_node = $GameContainer/FishGameLogic
-@onready var game_over_btn = $GameContainer/GameOverButton
-@onready var final_score = $GameContainer/GameOverButton/Score
+@onready var final_score = $GameContainer/Score
 #====================================READY + PROCESS FUNCTION====================================
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size
@@ -53,9 +52,6 @@ func _input(event):
 			dir = dir.normalized() * 75
 		food_pos = launch_origin + dir
 		game_logic_node.queue_redraw()
-"""==========================================================================================="""
-func _on_game_over_button_pressed():
-	exit_game()
 #========================================CUSTOM FUNCTIONS========================================
 func launch_food(_mouse_pos):
 	is_dragging = false
@@ -79,8 +75,16 @@ func reset_food():
 """==========================================================================================="""
 func show_game_over():
 	is_flying = false
-	game_over_btn.visible = true
 	final_score.text = "Fish Fed: %d" % score
+	final_score.visible = true
+	var tween = create_tween()
+	tween.tween_interval(2.0)																																				# Tween timer to allow the player to admire the painting.
+	tween.tween_property(game_container, "modulate:a", 0.0, 0.5)
+	tween.finished.connect(exit_game)
+"""==========================================================================================="""
+func exit_game():
+	get_tree().paused = false
+	queue_free()
 """==========================================================================================="""
 func get_trajectory_points() -> PackedVector2Array:
 	var points = PackedVector2Array()
@@ -98,8 +102,4 @@ func get_trajectory_points() -> PackedVector2Array:
 		points.append(Vector2(x, y))
 		t += step
 	return points
-"""==========================================================================================="""
-func exit_game():
-	get_tree().paused = false
-	queue_free()
 """==========================================================================================="""

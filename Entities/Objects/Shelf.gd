@@ -26,7 +26,7 @@ func leave_object():
 func spawn_sliding_puzzle():
 	if sliding_puzzle:
 		var game_instance = sliding_puzzle.instantiate()
-		get_tree().root.add_child(game_instance)
+		add_child(game_instance)
 		get_tree().paused = true
 	else:
 		print("Error: Sliding puzzle not assigned in Inspector!")
@@ -34,7 +34,7 @@ func spawn_sliding_puzzle():
 func spawn_steady_heands():
 	if steady_hands:
 		var game_instance = steady_hands.instantiate()
-		get_tree().root.add_child(game_instance)
+		add_child(game_instance)
 		get_tree().paused = true
 	else:
 		print("Error: Steady Hands not assigned in Inspector!")

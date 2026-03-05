@@ -43,23 +43,13 @@ script = ExtResource("2_1lhnw")
 wait_time = 0.15
 autostart = true
 
-[node name="GameOverButton" type="Button" parent="GameContainer" unique_id=857373655]
+[node name="Score" type="Label" parent="GameContainer" unique_id=1728073340]
 visible = false
 layout_mode = 1
-offset_left = 112.0
-offset_top = 160.0
-offset_right = 208.0
-offset_bottom = 192.0
-text = "Game Over"
-
-[node name="Score" type="Label" parent="GameContainer/GameOverButton" unique_id=1728073340]
-layout_mode = 1
-offset_left = 4.0
-offset_top = -24.0
-offset_right = 92.0
-offset_bottom = -1.0
+offset_left = 116.0
+offset_top = 136.0
+offset_right = 204.0
+offset_bottom = 159.0
 text = "Score: 9999"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="pressed" from="GameContainer/GameOverButton" to="." method="_on_game_over_button_pressed"]

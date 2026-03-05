@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://q02xhnv0axgt"]
+
+[ext_resource type="Script" uid="uid://dt5yu4ua5o0av" path="res://Minigames/Bike_Game/bike_game.gd" id="1_t73bp"]
+[ext_resource type="Texture2D" uid="uid://2d43ajl3ylek" path="res://Assets/Minigames/Bike_Game/bike.png" id="3_myktu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go0rx"]
+size = Vector2(52, 72)
+
+[node name="bike_game" type="CanvasLayer" unique_id=1950772195]
+process_mode = 3
+script = ExtResource("1_t73bp")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=74367983]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="GameContainer" type="Control" parent="." unique_id=2064845868]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="RoadBackground" type="ColorRect" parent="GameContainer" unique_id=1417337092]
+process_mode = 3
+modulate = Color(0.24840015, 0.24840018, 0.24840015, 1)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+
+[node name="StartLabel" type="Label" parent="GameContainer/RoadBackground" unique_id=2101122823]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = -23.0
+offset_right = 150.0
+grow_horizontal = 2
+text = "Left Click to Start..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Obstacles" type="Node2D" parent="GameContainer" unique_id=601832730]
+process_mode = 3
+
+[node name="ScoreLabel" type="Label" parent="GameContainer" unique_id=2118028138]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 182.0
+offset_top = -1.0
+offset_right = 222.0
+offset_bottom = 22.0
+grow_horizontal = 2
+
+[node name="PlayerBike" type="Area2D" parent="GameContainer" unique_id=571477242]
+process_mode = 3
+process_priority = 1
+process_physics_priority = 1
+visible = false
+position = Vector2(150, 300)
+collision_layer = 8
+collision_mask = 8
+
+[node name="Sprite" type="Sprite2D" parent="GameContainer/PlayerBike" unique_id=1265916517]
+scale = Vector2(4, 4)
+texture = ExtResource("3_myktu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/PlayerBike" unique_id=1197295589]
+process_mode = 3
+shape = SubResource("RectangleShape2D_go0rx")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=872719678]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
